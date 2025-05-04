@@ -15,7 +15,7 @@ A quick reference for performing common data operations in **PySpark** (DataFram
 - [Group & Aggregate](#group--aggregate)
 - [Join & Merge](#join--merge)
 - [Column Operations](#column-operations)
-- [PySpark F Functions](#pyspark-f-functions)
+- [PySpark `F` Functions (from pyspark.sql.functions)](#pyspark-f-functions-from-pysparksqlfunctions)
 - [Missing Data](#missing-data)
 - [RDD Operations](#rdd-operations)
 - [Write Data](#write-data)
@@ -118,7 +118,13 @@ df = df.withColumnRenamed('old', 'new')
 df = df.drop('unwanted')
 ```
 
-## PySpark F Functions
+## PySpark F Functions (from pyspark.sql.functions)
+
+### Importing F Functions
+
+```python
+from pyspark.sql import functions as F
+```
 
 ## Missing Data
 
