@@ -187,8 +187,12 @@ df.groupBy('department').agg(F.countDistinct('employee_id').alias('distinct_empl
 ```python
 from pyspark.sql.window import Window
 
-# Define a window specification
+# Define a window specification with partition and ordering by salary
 window_spec = Window.partitionBy('department').orderBy('salary')
+
+# Adding ROWS BETWEEN to the window specification
+# Example: Current row and 2 previous rows (ROWS BETWEEN 2 PRECEDING AND CURRENT ROW)
+window_spec_with_range = window_spec.rowsBetween(-2, 0)  # This includes the current row and the previous two rows
 
 # Calculate rank based on salary within each department
 df = df.withColumn('rank', F.rank().over(window_spec))
@@ -198,6 +202,9 @@ df = df.withColumn('running_total', F.sum('salary').over(window_spec))
 
 # Get the lag value of salary (previous row's salary) within each department
 df = df.withColumn('previous_salary', F.lag('salary', 1).over(window_spec))
+
+# Calculate the rolling sum (sum of salaries for the current row + 2 previous rows)
+df = df.withColumn('rolling_sum', F.sum('salary').over(window_spec_with_range))
 ```
 
 ### 4. Other Useful Functions (eg.Null Handling)
