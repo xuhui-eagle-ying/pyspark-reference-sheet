@@ -15,6 +15,7 @@ A quick reference for performing common data operations in **PySpark** (DataFram
 - [Group & Aggregate](#group--aggregate)
 - [Join & Merge](#join--merge)
 - [Column Operations](#column-operations)
+- [PySpark F Functions](#pyspark-f-functions)
 - [Missing Data](#missing-data)
 - [RDD Operations](#rdd-operations)
 - [Write Data](#write-data)
@@ -116,6 +117,8 @@ df = df.withColumnRenamed('old', 'new')
 # Drop a column named 'unwanted'
 df = df.drop('unwanted')
 ```
+
+## PySpark F Functions
 
 ## Missing Data
 
